@@ -1,3 +1,5 @@
 import { taskFirst, taskNext } from './0-constants.js';
 
-console.log(`${taskFirst()} ${taskNext()}`);
+if (!process.env.SKIP_LOG) {
+  console.log(`${taskFirst()} ${taskNext()}`);
+}
