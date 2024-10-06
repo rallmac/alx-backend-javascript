@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: true,
+    browser: false,
     es6: true,
     jest: true,
   },
@@ -18,8 +18,8 @@ module.exports = {
   },
   plugins: ['jest'],
   rules: {
-    'no-console': 'on',
-    'no-shadow': 'on',
+    'no-console': 'off',
+    'no-shadow': 'off',
     'no-restricted-syntax': [
       'error',
       'LabeledStatement',
