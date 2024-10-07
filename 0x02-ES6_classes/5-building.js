@@ -25,7 +25,6 @@
   }
   }
 
-  
   if (require.main === module) {
     const b = new Building(100);
     console.log(b);
@@ -39,29 +38,26 @@
     console.log(err);
     }
   }
-**/
+* */
 export default class Building {
   constructor(sqft) {
-    if (typeof sqft !=='number') {
+    if (typeof sqft !== 'number') {
       throw new TypeError('sqft must be a number');
-        }
-        this._sqft=sqft;
+    }
+    this._sqft = sqft;
 
-
-        if (new.target !== Building) {
-          if (typeof this.evacuationWarningMessage !== 'function') {
-            throw new Error('Class extending Bulding must override evacuationWarningMessage');
-	  }
-	}
-      }
-
-
-      get sqft() {
-        return this._sqft;
-      }
-
-
-      static evacuationWarningMessage() {
-        throw new Error('Class extending Building must override evacuationWarningMessage');
+    if (new.target !== Building) {
+      if (typeof this.evacuationWarningMessage !== 'function') {
+        throw new Error('Class extending Bulding must override evacuationWarningMessage');
       }
     }
+  }
+
+  get sqft() {
+    return this._sqft;
+  }
+
+  static evacuationWarningMessage() {
+    throw new Error('Class extending Building must override evacuationWarningMessage');
+  }
+}
