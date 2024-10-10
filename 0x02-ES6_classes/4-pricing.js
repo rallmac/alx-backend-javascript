@@ -1,26 +1,40 @@
-export default class Currency {
-  constructor(code, name) {
-    this._code = code;
-    this._name = name;
+import Currency from './3-currency';
+
+class Pricing {
+  constructor(amount, currency) {
+    this._amount = amount;
+    this._currency = currency; // Expecting an instance of Currency
   }
 
-  get code() {
-    return this._code;
+  // Getter for amount
+  get amount() {
+    return this._amount;
   }
 
-  set code(value) {
-    this._code = value;
+  // Setter for amount
+  set amount(value) {
+    this._amount = value;
   }
 
-  get name() {
-    return this._name;
+  // Getter for currency
+  get currency() {
+    return this._currency;
   }
 
-  set name(value) {
-    this._name = value;
+  // Setter for currency
+  set currency(value) {
+    this._currency = value;
   }
 
-  displayFullCurrency() {
-    return `${this._name} (${this._code})`;
+  // Method to display the full price
+  displayFullPrice() {
+    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+  }
+
+  // Static method to convert price
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
   }
 }
+
+export default Pricing;
