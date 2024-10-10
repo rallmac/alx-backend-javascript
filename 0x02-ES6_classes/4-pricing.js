@@ -37,4 +37,5 @@ class Pricing {
   }
 }
 
+export Currency;
 export default Pricing;
