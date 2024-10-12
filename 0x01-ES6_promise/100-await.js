@@ -1,4 +1,4 @@
-import asyncUploadUser from './asyncUploadUser.js';
+import asyncUploadUser from './asyncUploadUser';
 
 async function test() {
   const value = await someAsyncFunction();
@@ -6,4 +6,3 @@ async function test() {
 }
 
 test();
-
