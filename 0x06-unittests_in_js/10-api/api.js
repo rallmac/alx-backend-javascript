@@ -1,16 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
-app.use(bodyParser.json());
+const port = 7865;
 
-// GET /cart/:id - existing route
-app.get('/cart/:id(\\d+)', (req, res) => {
-  const id = req.params.id;
-  res.status(200).send(`Payment methods for cart ${id}`);
+app.use(express.json()); // Middleware to parse JSON body
+
+// Index route
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to the payment system');
 });
 
-// GET /available_payments - new route
+// Cart route
+app.get('/cart/:id(\\d+)', (req, res) => {
+  const cartId = req.params.id;
+  res.status(200).send(`Payment methods for cart ${cartId}`);
+});
+
+// Available payments route
 app.get('/available_payments', (req, res) => {
   res.status(200).json({
     payment_methods: {
@@ -20,9 +25,9 @@ app.get('/available_payments', (req, res) => {
   });
 });
 
-// POST /login - new route
+// Login route
 app.post('/login', (req, res) => {
-  const { userName } = req.body;
+  const userName = req.body.userName;
   if (userName) {
     res.status(200).send(`Welcome ${userName}`);
   } else {
@@ -31,8 +36,8 @@ app.post('/login', (req, res) => {
 });
 
 // Start the server
-app.listen(7865, () => {
-  console.log('API available on localhost port 7865');
+app.listen(port, () => {
+  console.log(`API available on localhost port ${port}`);
 });
 
-module.exports = app;
+module.exports = app; // Export for testing
